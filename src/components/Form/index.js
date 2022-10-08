@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Input } from "../Input";
+import { Textarea } from "../Textarea";
 import { googleApi } from "../../api/api";
 
 export const Form = () => {
@@ -15,24 +17,31 @@ export const Form = () => {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <input
+      <Input
+        label="Nome"
         value={name}
         type="text"
         onChange={(e) => setName(e.target.value)}
+        required
       />
-      <input
+      <Input
+        label="Email"
         value={email}
         type="email"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <input
+      <Input
+        label="Telefone"
         value={phone}
         type="tel"
         onChange={(e) => setPhone(e.target.value)}
       />
-      <textarea onChange={(e) => setComment(e.target.value)}>
-        {comment}
-      </textarea>
+      <Textarea
+        label="Comentário"
+        onChange={(e) => setComment(e.target.value)}
+        value={comment}
+      />
+
       <button>Enviar</button>
     </form>
   );
